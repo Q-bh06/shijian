@@ -262,40 +262,38 @@ function renderHome() {
     <section class="hero">
       <div class="hero-copy">
         <span class="eyebrow">2026 暑期社会实践</span>
-        <h1>青年奔赴现场，让实践抵达真实生活。</h1>
-        <p>从田野调研到支教课堂，从科创服务到社区陪伴，记录每一次走近社会的脚步，也把成果带回校园继续交流。</p>
+        <h1>在真实的土地上，看见青年行动的力量。</h1>
+        <p>从田野调研到支教课堂，从科创服务到社区陪伴，平台记录每一次出发、抵达与回望。</p>
         <div class="hero-actions">
           <a class="button primary" href="#/projects">浏览项目库</a>
-          <a class="button secondary" href="#/register">立即报名</a>
-        </div>
-        <div class="hero-feature-row" aria-label="实践方向">
-          <span>田野调研</span>
-          <span>志愿服务</span>
-          <span>青年共创</span>
+          <a class="button secondary" href="#/outcomes">查看成果</a>
         </div>
       </div>
-      <aside class="hero-panel" aria-label="近期活动">
-        <span class="panel-label">近期活动</span>
-        <div class="list-panel">
-          ${state.activities
-            .slice(0, 2)
-            .map((activity) => `<a class="list-item" href="#/activities/${activity.id}"><strong>${activity.title}</strong><span>${activity.date} · ${activity.place}</span></a>`)
-            .join("")}
-        </div>
-      </aside>
+      <div class="hero-statline" aria-label="平台概览">
+        <div class="hero-stat"><strong>${String(state.projects.length).padStart(2, "0")}</strong><span>实践项目</span></div>
+        <div class="hero-stat"><strong>${String(state.outcomes.length).padStart(2, "0")}</strong><span>成果沉淀</span></div>
+        <div class="hero-stat"><strong>${String(state.activities.length).padStart(2, "0")}</strong><span>近期活动</span></div>
+        <a class="hero-stat more" href="#/register"><strong>JOIN</strong><span>报名参与</span></a>
+      </div>
     </section>
 
     <section class="home-overview" aria-label="平台概览">
       <div class="overview-inner">
-        <div class="metric-grid">
-          <div class="metric"><strong>${state.projects.length}</strong><span>实践项目</span></div>
-          <div class="metric"><strong>${state.outcomes.length}</strong><span>成果类型</span></div>
-          <div class="metric"><strong>${state.activities.length}</strong><span>近期活动</span></div>
-        </div>
-        <div class="overview-note">
-          <strong>从一次出发，到一份成果。</strong>
-          <span>平台记录实践项目、活动通知与成果沉淀，也为后续招募和交流留下清晰入口。</span>
-        </div>
+        <a class="overview-card" href="#/projects">
+          <span>01</span>
+          <h3>项目库</h3>
+          <p>集中呈现支教、调研、科创与社区服务项目，帮助同学快速找到实践入口。</p>
+        </a>
+        <a class="overview-card" href="#/outcomes">
+          <span>02</span>
+          <h3>成果库</h3>
+          <p>以纪录片、推送文章、调研报告和摄影作品沉淀实践过程。</p>
+        </a>
+        <a class="overview-card" href="#/activities">
+          <span>03</span>
+          <h3>活动广场</h3>
+          <p>发布讲座、分享会和工作坊，让项目交流从线下延伸到线上。</p>
+        </a>
       </div>
     </section>
 
