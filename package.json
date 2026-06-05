@@ -1,0 +1,17 @@
+{
+  "name": "social-practice-prototype",
+  "version": "1.0.0",
+  "description": "A simple campus social practice showcase and registration prototype.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "campus",
+    "social-practice",
+    "prototype"
+  ],
+  "author": "",
+  "license": "MIT"
+}
