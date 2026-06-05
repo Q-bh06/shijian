@@ -14,6 +14,8 @@ npm start
 http://localhost:3000
 ```
 
+也可以在 Windows 文件夹中双击 `启动网站.bat`。
+
 ## 功能
 
 - 首页：网站介绍、最新项目、热门项目、活动通知。
@@ -40,6 +42,12 @@ http://localhost:3000
 ```text
 data/registrations.json
 ```
+
+## GitHub Pages 说明
+
+仓库根目录的 `index.html` 会跳转到 `public/index.html`，因此可以直接用 GitHub Pages 发布静态展示版。
+
+GitHub Pages 不能运行 Node.js 后端。线上静态版可以浏览首页、项目库、成果库、活动广场和详情页；报名表单会临时保存到访问者自己的浏览器 `localStorage`。如果需要让线上报名真正保存到数据库或发送邮箱，需要部署到支持后端的平台。
 
 ## 扩展建议
 

@@ -1,0 +1,7 @@
+node_modules/
+server.log
+server.err.log
+server-test.log
+server-test.err.log
+*.log
+C*GitSSH*

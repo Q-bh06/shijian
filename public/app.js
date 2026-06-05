@@ -9,6 +9,137 @@ const state = {
   options: []
 };
 
+const fallbackData = {
+  projects: [
+    {
+      id: "one-day-one-life",
+      title: "一日·一生",
+      category: "生命教育",
+      summary: "走进基层社区与乡村家庭，用一天的陪伴理解不同人生经验。",
+      description:
+        "“一日·一生”项目鼓励学生以访谈、陪伴、记录的方式参与社区服务，关注老年人、留守儿童和基层劳动者的日常生活，形成兼具温度与思考的实践成果。",
+      location: "浙江省湖州市安吉县",
+      members: ["陈雨桐", "李明哲", "王思源", "赵清"],
+      outcomes: ["人物访谈短片 3 部", "实践札记 18 篇", "社区服务时长 120 小时"],
+      status: "报名中",
+      cover: "images/project-community.svg"
+    },
+    {
+      id: "teaching-support",
+      title: "支教项目",
+      category: "教育帮扶",
+      summary: "为乡村学校提供课程支持、兴趣课堂和成长陪伴。",
+      description:
+        "支教项目面向师范、中文、艺术、体育等方向学生招募志愿者，围绕阅读、科学启蒙、心理陪伴和素质拓展开展连续服务。",
+      location: "贵州省黔东南苗族侗族自治州",
+      members: ["刘思琪", "周航", "何佳宁", "马子昂"],
+      outcomes: ["暑期课程包 12 套", "学生成长档案 46 份", "校园墙绘 1 组"],
+      status: "报名中",
+      cover: "images/project-teaching.svg"
+    },
+    {
+      id: "innovation-tech",
+      title: "科创项目",
+      category: "科技服务",
+      summary: "用低成本技术方案回应乡村治理、农业生产和校园服务问题。",
+      description:
+        "科创项目组织学生把传感器、数据可视化、智能硬件和小程序原型带到真实场景中测试，强调可复制、可维护、可持续的技术服务。",
+      location: "江苏省南京市浦口区",
+      members: ["许亦辰", "唐婧", "沈南", "郭一帆"],
+      outcomes: ["温湿度监测原型 2 套", "数据看板 1 个", "专利申报材料 1 份"],
+      status: "已结束",
+      cover: "images/project-innovation.svg"
+    },
+    {
+      id: "field-research",
+      title: "调研项目",
+      category: "社会观察",
+      summary: "围绕乡村振兴、非遗传承和青年就业开展专题调研。",
+      description:
+        "调研项目训练学生完成选题、访谈、问卷、资料整理和报告写作，最终产出可供学院、社区或合作单位参考的实践报告。",
+      location: "福建省泉州市晋江市",
+      members: ["郑书予", "孙悦", "黄嘉树", "林墨"],
+      outcomes: ["问卷样本 328 份", "深度访谈 21 人", "调研报告 1 份"],
+      status: "已结束",
+      cover: "images/project-research.svg"
+    }
+  ],
+  outcomes: [
+    {
+      id: "documentary-village-day",
+      title: "村落的一天",
+      category: "纪录片",
+      summary: "记录乡村清晨集市、课堂与夜晚广场的生活切片。",
+      author: "影像实践小组",
+      related: "一日·一生",
+      detail:
+        "影片以 18 分钟短纪录片形式呈现村落生活节奏，重点关注代际关系、公共空间和青年返乡创业。"
+    },
+    {
+      id: "article-craft-memory",
+      title: "指尖上的传统工艺",
+      category: "推送文章",
+      summary: "以图文方式呈现竹编、蓝染和木版年画的传承故事。",
+      author: "非遗观察小组",
+      related: "调研项目",
+      detail:
+        "文章整合采访摘录、工艺流程图和学生体验记录，适合在学院公众号发布。"
+    },
+    {
+      id: "report-rural-education",
+      title: "乡村课后服务调研报告",
+      category: "调研报告",
+      summary: "分析乡村学校课后服务资源、师资压力与学生需求。",
+      author: "教育调研小组",
+      related: "支教项目",
+      detail:
+        "报告基于问卷和访谈材料，提出课程资源共享、志愿者培训和连续跟踪机制三项建议。"
+    },
+    {
+      id: "photo-fishing-harbor",
+      title: "港口晨光",
+      category: "摄影作品",
+      summary: "展示渔港劳动场景、海产品交易和社区互助网络。",
+      author: "摄影记录小组",
+      related: "渔业分享会",
+      detail:
+        "作品以组照方式呈现渔港一天的工作节奏，可用于成果展板和线上影像展。"
+    }
+  ],
+  activities: [
+    {
+      id: "agriculture-lecture",
+      title: "农业专家讲座",
+      type: "专题讲座",
+      date: "2026-06-12 14:30",
+      place: "学生活动中心 B201",
+      summary: "邀请农业技术推广专家分享智慧农业与青年实践选题。",
+      detail:
+        "讲座将介绍作物监测、农产品品牌建设和乡村实践中的调研伦理，并开放现场问答。"
+    },
+    {
+      id: "fishery-sharing",
+      title: "渔业分享会",
+      type: "经验交流",
+      date: "2026-06-18 19:00",
+      place: "图书馆报告厅",
+      summary: "渔业合作社负责人和学生实践队共同交流海洋社区观察。",
+      detail:
+        "分享会包含实践队成果展示、合作社案例讲解和暑期调研招募说明。"
+    },
+    {
+      id: "traditional-craft",
+      title: "传统工艺体验",
+      type: "工作坊",
+      date: "2026-06-25 15:00",
+      place: "美育中心 103",
+      summary: "体验竹编基础技法，理解非遗项目的社区传承方式。",
+      detail:
+        "工作坊限额 30 人，现场提供材料包，参与者可将体验记录纳入实践成果。"
+    }
+  ]
+};
+
 const api = {
   projects: () => fetchJson("/api/projects"),
   project: (id) => fetchJson(`/api/projects/${encodeURIComponent(id)}`),
@@ -64,8 +195,22 @@ async function loadBaseData() {
     state.activities = activities;
     state.options = options;
   } catch (error) {
-    app.innerHTML = `<section class="empty-state"><p>${escapeHtml(error.message)}</p></section>`;
+    useFallbackData();
   }
+}
+
+function useFallbackData() {
+  state.projects = fallbackData.projects;
+  state.outcomes = fallbackData.outcomes;
+  state.activities = fallbackData.activities;
+  state.options = makeRegistrationOptions(fallbackData.projects, fallbackData.activities);
+}
+
+function makeRegistrationOptions(projects, activities) {
+  return [
+    ...projects.map((item) => ({ id: `project:${item.id}`, name: item.title, type: "项目" })),
+    ...activities.map((item) => ({ id: `activity:${item.id}`, name: item.title, type: "活动" }))
+  ];
 }
 
 function getRoute() {
@@ -398,10 +543,23 @@ async function submitRegistration(event) {
     message.textContent = result.message;
     form.reset();
   } catch (error) {
-    message.textContent = error.message;
+    saveStaticRegistration(payload);
+    message.textContent = "当前为静态网页，报名信息已临时保存在本机浏览器。";
+    form.reset();
   } finally {
     submitButton.disabled = false;
   }
+}
+
+function saveStaticRegistration(payload) {
+  const key = "socialPracticeRegistrations";
+  const registrations = JSON.parse(localStorage.getItem(key) || "[]");
+  registrations.push({
+    ...payload,
+    id: `local-${Date.now()}`,
+    submittedAt: new Date().toISOString()
+  });
+  localStorage.setItem(key, JSON.stringify(registrations));
 }
 
 function projectCard(project) {
