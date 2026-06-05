@@ -260,20 +260,22 @@ function renderHome() {
 
   app.innerHTML = `
     <section class="hero">
-      <div>
-        <h1>把课堂带到真实现场，把实践带回校园交流。</h1>
-        <p>社会实践是学生走进社区、乡村、企业与公共议题的学习方式。平台集中展示项目、活动和成果，帮助同学发现机会、报名参与、沉淀经验。</p>
+      <div class="hero-copy">
+        <span class="eyebrow">2026 暑期社会实践</span>
+        <h1>青年奔赴现场，让实践抵达真实生活。</h1>
+        <p>从田野调研到支教课堂，从科创服务到社区陪伴，记录每一次走近社会的脚步，也把成果带回校园继续交流。</p>
         <div class="hero-actions">
           <a class="button primary" href="#/projects">浏览项目库</a>
           <a class="button secondary" href="#/register">立即报名</a>
         </div>
-      </div>
-      <aside class="hero-panel" aria-label="平台概览">
-        <div class="metric-grid">
-          <div class="metric"><strong>${state.projects.length}</strong><span>实践项目</span></div>
-          <div class="metric"><strong>${state.outcomes.length}</strong><span>成果类型</span></div>
-          <div class="metric"><strong>${state.activities.length}</strong><span>近期活动</span></div>
+        <div class="hero-feature-row" aria-label="实践方向">
+          <span>田野调研</span>
+          <span>志愿服务</span>
+          <span>青年共创</span>
         </div>
+      </div>
+      <aside class="hero-panel" aria-label="近期活动">
+        <span class="panel-label">近期活动</span>
         <div class="list-panel">
           ${state.activities
             .slice(0, 2)
@@ -281,6 +283,20 @@ function renderHome() {
             .join("")}
         </div>
       </aside>
+    </section>
+
+    <section class="home-overview" aria-label="平台概览">
+      <div class="overview-inner">
+        <div class="metric-grid">
+          <div class="metric"><strong>${state.projects.length}</strong><span>实践项目</span></div>
+          <div class="metric"><strong>${state.outcomes.length}</strong><span>成果类型</span></div>
+          <div class="metric"><strong>${state.activities.length}</strong><span>近期活动</span></div>
+        </div>
+        <div class="overview-note">
+          <strong>从一次出发，到一份成果。</strong>
+          <span>平台记录实践项目、活动通知与成果沉淀，也为后续招募和交流留下清晰入口。</span>
+        </div>
+      </div>
     </section>
 
     <section class="section">
