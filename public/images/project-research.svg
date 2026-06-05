@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-labelledby="title">
+  <title id="title">调研项目插画</title>
+  <rect width="720" height="360" fill="#fff7ee"/>
+  <rect x="120" y="58" width="270" height="244" rx="12" fill="#ffffff" stroke="#e2b58e" stroke-width="6"/>
+  <path d="M164 114h174M164 158h174M164 202h124M164 246h150" stroke="#667085" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="484" cy="156" r="66" fill="#e9f6f0" stroke="#25745c" stroke-width="10"/>
+  <path d="M534 206l74 74" stroke="#25745c" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="484" cy="156" r="30" fill="#2f6fb2" opacity=".78"/>
+  <path d="M108 306h506" stroke="#e7d5c3" stroke-width="14" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>社会实践展示与交流平台</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#/">
+        <span class="brand-mark">实</span>
+        <span>
+          <strong>社会实践展示与交流平台</strong>
+          <small>Campus Practice Hub</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#/">首页</a>
+        <a href="#/projects">项目库</a>
+        <a href="#/outcomes">成果库</a>
+        <a href="#/activities">活动广场</a>
+        <a href="#/register">报名系统</a>
+      </nav>
+    </header>
+
+    <main id="app" class="app-shell" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <p>面向校园学生的社会实践展示、交流与报名原型。</p>
+      <p>数据接口已预留，可继续扩展项目、活动、成果和审核管理。</p>
+    </footer>
+
+    <template id="loading-template">
+      <section class="empty-state">
+        <p>内容加载中...</p>
+      </section>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
