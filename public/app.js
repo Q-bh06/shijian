@@ -262,8 +262,8 @@ function renderHome() {
     <section class="hero">
       <div class="hero-copy">
         <span class="eyebrow">2026 暑期社会实践</span>
-        <h1>在真实的土地上，看见青年行动的力量。</h1>
-        <p>从田野调研到支教课堂，从科创服务到社区陪伴，平台记录每一次出发、抵达与回望。</p>
+        <h1>让青年实践，抵达更广阔的真实世界。</h1>
+        <p>从社区服务、支教课堂到科创行动、社会调研与文化记录，平台连接项目、活动与成果，让每一次参与都有清晰的入口与可见的回响。</p>
         <div class="hero-actions">
           <a class="button primary" href="#/projects">浏览项目库</a>
           <a class="button secondary" href="#/outcomes">查看成果</a>
@@ -277,7 +277,7 @@ function renderHome() {
       </div>
     </section>
 
-    <section class="home-overview" aria-label="平台概览">
+    <section class="home-overview home-band" aria-label="平台概览">
       <div class="overview-inner">
         <a class="overview-card" href="#/projects">
           <span>01</span>
@@ -297,7 +297,7 @@ function renderHome() {
       </div>
     </section>
 
-    <section class="section">
+    <section class="section home-section">
       <div class="section-header">
         <div>
           <h2>最新项目</h2>
@@ -308,7 +308,7 @@ function renderHome() {
       <div class="grid cards">${latestProjects.map(projectCard).join("")}</div>
     </section>
 
-    <section class="section">
+    <section class="section home-section alt">
       <div class="section-header">
         <div>
           <h2>热门项目</h2>
@@ -318,7 +318,7 @@ function renderHome() {
       <div class="grid cards">${hotProjects.map(projectCard).join("")}</div>
     </section>
 
-    <section class="section">
+    <section class="section home-section">
       <div class="section-header">
         <div>
           <h2>活动通知</h2>
