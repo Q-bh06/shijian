@@ -213,12 +213,6 @@ function getContentType(filePath) {
 function serveStatic(req, res, pathname) {
   let requestedPath = pathname === "/" ? "/index.html" : pathname;
   requestedPath = decodeURIComponent(requestedPath);
-  if (requestedPath === "/public" || requestedPath.startsWith("/public/")) {
-    requestedPath = requestedPath.replace(/^\/public\/?/, "/");
-    if (requestedPath === "/") {
-      requestedPath = "/index.html";
-    }
-  }
 
   const filePath = path.normalize(path.join(PUBLIC_DIR, requestedPath));
   const relativePath = path.relative(PUBLIC_DIR, filePath);

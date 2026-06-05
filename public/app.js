@@ -9,9 +9,6 @@ const state = {
   options: []
 };
 
-let practiceWorld = null;
-let practiceWorldModule = null;
-
 const fallbackData = {
   projects: [
     {
@@ -229,10 +226,6 @@ function getRoute() {
 function render() {
   const route = getRoute();
   setActiveNav(route.name);
-  if (practiceWorld) {
-    practiceWorld.dispose();
-    practiceWorld = null;
-  }
 
   const views = {
     home: renderHome,
@@ -262,124 +255,80 @@ function showLoading() {
 }
 
 function renderHome() {
+  const latestProjects = state.projects.slice(0, 3);
+  const hotProjects = [...state.projects].sort((a, b) => a.title.localeCompare(b.title, "zh-CN")).slice(0, 3);
+
   app.innerHTML = `
-    <section class="runner-hero" data-practice-world aria-label="无限延伸的 3D 校园实践世界" tabindex="0">
-      <canvas class="world-canvas" aria-hidden="true"></canvas>
-      <div class="world-vignette" aria-hidden="true"></div>
-      <div class="runner-hud">
-        <div class="runner-copy">
-          <span class="eyebrow">2026 暑期社会实践</span>
-          <h1>向前走，实践世界会不断展开。</h1>
-          <p>项目展示馆、成果展览馆、活动中心广场和实践服务中心沿校园道路循环出现，每一段抵达都会打开对应入口。</p>
-          <div class="runner-actions">
-            <button class="button primary" type="button" data-runner-action="forward">继续向前</button>
-            <button class="button secondary" type="button" data-runner-action="backward">回看上一段</button>
-          </div>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">2026 暑期社会实践</span>
+        <h1>让青年实践，抵达更广阔的真实世界。</h1>
+        <p>从社区服务、支教课堂到科创行动、社会调研与文化记录，平台连接项目、活动与成果，让每一次参与都有清晰的入口与可见的回响。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#/projects">浏览项目库</a>
+          <a class="button secondary" href="#/outcomes">查看成果</a>
         </div>
-        <aside class="runner-status" aria-label="当前探索位置">
-          <span>当前区域</span>
-          <strong data-runner-current>项目库</strong>
-          <span>前方区域</span>
-          <strong data-runner-next>成果库</strong>
-        </aside>
       </div>
-      <article class="runner-entry" data-runner-entry aria-live="polite">
-        <span data-runner-kicker>项目展示馆</span>
-        <h2 data-runner-title>项目库</h2>
-        <p data-runner-desc>集中浏览支教、科创、调研与社区服务项目。</p>
-        <a class="button primary" data-runner-link href="#/projects">进入项目库</a>
-      </article>
-      <div class="runner-meter" aria-hidden="true">
-        <span></span>
+      <div class="hero-statline" aria-label="平台概览">
+        <div class="hero-stat"><strong>${String(state.projects.length).padStart(2, "0")}</strong><span>实践项目</span></div>
+        <div class="hero-stat"><strong>${String(state.outcomes.length).padStart(2, "0")}</strong><span>成果沉淀</span></div>
+        <div class="hero-stat"><strong>${String(state.activities.length).padStart(2, "0")}</strong><span>近期活动</span></div>
+        <a class="hero-stat more" href="#/register"><strong>JOIN</strong><span>报名参与</span></a>
       </div>
     </section>
+
+    <section class="home-overview home-band" aria-label="平台概览">
+      <div class="overview-inner">
+        <a class="overview-card" href="#/projects">
+          <span>01</span>
+          <h3>项目库</h3>
+          <p>集中呈现支教、调研、科创与社区服务项目，帮助同学快速找到实践入口。</p>
+        </a>
+        <a class="overview-card" href="#/outcomes">
+          <span>02</span>
+          <h3>成果库</h3>
+          <p>以纪录片、推送文章、调研报告和摄影作品沉淀实践过程。</p>
+        </a>
+        <a class="overview-card" href="#/activities">
+          <span>03</span>
+          <h3>活动广场</h3>
+          <p>发布讲座、分享会和工作坊，让项目交流从线下延伸到线上。</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section home-section">
+      <div class="section-header">
+        <div>
+          <h2>最新项目</h2>
+          <p>按实践季优先展示，适合快速了解近期机会。</p>
+        </div>
+        <a class="button secondary" href="#/projects">查看全部</a>
+      </div>
+      <div class="grid cards">${latestProjects.map(projectCard).join("")}</div>
+    </section>
+
+    <section class="section home-section alt">
+      <div class="section-header">
+        <div>
+          <h2>热门项目</h2>
+          <p>跨学院参与度高，成果展示较完整。</p>
+        </div>
+      </div>
+      <div class="grid cards">${hotProjects.map(projectCard).join("")}</div>
+    </section>
+
+    <section class="section home-section">
+      <div class="section-header">
+        <div>
+          <h2>活动通知</h2>
+          <p>讲座、分享会和工作坊集中发布。</p>
+        </div>
+        <a class="button secondary" href="#/activities">进入广场</a>
+      </div>
+      <div class="grid two">${state.activities.map(activityListItem).join("")}</div>
+    </section>
   `;
-  mountPracticeWorld(document.querySelector("[data-practice-world]"));
-}
-
-async function mountPracticeWorld(root) {
-  if (!root) return;
-
-  try {
-    if (!practiceWorldModule) {
-      practiceWorldModule = import("./three-scene.js");
-    }
-    const { createPracticeWorld } = await practiceWorldModule;
-    practiceWorld = createPracticeWorld(root);
-  } catch (error) {
-    console.error("3D practice world failed to start:", error);
-    root.classList.add("runner-hero-fallback");
-    const fallbackMessage = root.querySelector("[data-runner-desc]");
-    if (fallbackMessage) {
-      fallbackMessage.textContent = "当前浏览器没有启动 3D 模块，你仍然可以通过入口浏览项目、成果、活动和报名页面。";
-    }
-  }
-}
-
-function setupJourneyScene() {
-  const scene = document.querySelector("[data-journey]");
-  if (!scene) return;
-
-  const panels = Array.from(scene.querySelectorAll(".journey-panel"));
-  const targetButtons = Array.from(scene.querySelectorAll("[data-journey-target]"));
-  const navButtons = Array.from(scene.querySelectorAll(".journey-nav [data-journey-target]"));
-  let step = 0;
-  let pointerStart = null;
-  let lastWheelAt = 0;
-
-  const setStep = (nextStep) => {
-    step = Math.max(0, Math.min(panels.length - 1, nextStep));
-    const progress = panels.length <= 1 ? 0 : step / (panels.length - 1);
-    scene.dataset.step = String(step);
-    scene.style.setProperty("--journey-step", step);
-    scene.style.setProperty("--journey-progress", progress.toFixed(3));
-    scene.querySelector(".journey-world").style.transform = `translateX(${-step * 100}vw)`;
-    navButtons.forEach((button) => {
-      button.classList.toggle("active", Number(button.dataset.journeyTarget) === step);
-      button.setAttribute("aria-current", Number(button.dataset.journeyTarget) === step ? "step" : "false");
-    });
-  };
-
-  targetButtons.forEach((button) => {
-    button.addEventListener("click", () => setStep(Number(button.dataset.journeyTarget)));
-  });
-
-  scene.addEventListener(
-    "wheel",
-    (event) => {
-      const now = Date.now();
-      const direction = event.deltaY > 0 ? 1 : -1;
-      const isAtStart = step === 0 && direction < 0;
-      const isAtEnd = step === panels.length - 1 && direction > 0;
-      if (isAtStart || isAtEnd) return;
-      if (now - lastWheelAt < 520 || Math.abs(event.deltaY) < 12) return;
-      event.preventDefault();
-      lastWheelAt = now;
-      setStep(step + direction);
-    },
-    { passive: false }
-  );
-
-  scene.addEventListener("pointerdown", (event) => {
-    pointerStart = event.clientX;
-    scene.setPointerCapture(event.pointerId);
-  });
-
-  scene.addEventListener("pointerup", (event) => {
-    if (pointerStart === null) return;
-    const delta = event.clientX - pointerStart;
-    pointerStart = null;
-    if (Math.abs(delta) > 48) {
-      setStep(step + (delta < 0 ? 1 : -1));
-    }
-  });
-
-  scene.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") setStep(step + 1);
-    if (event.key === "ArrowLeft") setStep(step - 1);
-  });
-
-  setStep(0);
 }
 
 function renderProjects(id) {
